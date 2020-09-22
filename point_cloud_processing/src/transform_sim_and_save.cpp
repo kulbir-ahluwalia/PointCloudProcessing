@@ -69,13 +69,13 @@ int main(int argc, char** argv){
 
   std::time_t t = std::time(0);
   std::tm* now = std::localtime(&t);
-  oss << "/home/naik/Data/PointCloud/" << (now->tm_mon + 1) << "-" 
+  oss << "/home/ksa/Data/PointCloud/" << (now->tm_mon + 1) << "-" 
       << (now->tm_mday) << "-" << (now->tm_year + 1900);
   mode_t nMode = 0733;
   int nError = 0;
   nError = mkdir(oss.str().c_str(), nMode);
 
-  oss2 << "/home/naik/Data/PointCloud/" << (now->tm_mon + 1) << "-" 
+  oss2 << "/home/ksa/Data/PointCloud/" << (now->tm_mon + 1) << "-" 
       << (now->tm_mday) << "-" << (now->tm_year + 1900) << "/unfiltered";
   nError = mkdir(oss2.str().c_str(), nMode);
     
@@ -85,7 +85,7 @@ int main(int argc, char** argv){
   // tf::TransformListener listener;  
   listener = new(tf::TransformListener);
 
-  ros::Subscriber sub = node.subscribe("velodyne_pointcloud", 1, cloud_cb);
+  ros::Subscriber sub = node.subscribe("velodyne_points", 1, cloud_cb);
 
   // ros::Rate rate(10.0);
   // while (node.ok()){
